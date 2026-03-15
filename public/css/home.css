@@ -812,4 +812,334 @@ img {
     .skills-title {
         line-height: 1.05;
     }
+}   
+/* PROJECTS */
+.projects-section {
+    background: var(--light-bg);
+    color: #111827;
+    padding: 10px 0 110px;
+    position: relative;
+    z-index: 5;
+}
+
+.projects-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+}
+
+.projects-top {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 60px;
+    align-items: end;
+}
+
+.projects-heading {
+    max-width: 520px;
+}
+
+.projects-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 4.6rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: #0f172a;
+}
+
+.projects-title span {
+    display: block;
+    color: var(--accent-2);
+    font-style: italic;
+    font-weight: 700;
+}
+
+.projects-intro {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-bottom: 12px;
+}
+
+.projects-intro p {
+    max-width: 360px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #1f2937;
+}
+
+/* GRID */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 2.05fr 0.95fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.project-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #d7dbde;
+    border-radius: 18px;
+    background: #f5f5f5;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.03);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+.project-card-large {
+    min-height: 640px;
+}
+
+.project-card-tall {
+    min-height: 860px;
+}
+
+.project-card-small {
+    min-height: 540px;
+    max-width: 48%;
+}
+
+.project-empty-block {
+    min-height: 540px;
+    border-radius: 18px;
+    border: 1px solid transparent;
+}
+
+/* IMAGE */
+.project-image-wrap {
+    width: 100%;
+    overflow: hidden;
+    background: #ddd;
+    position: relative;
+}
+
+.project-card-large .project-image-wrap {
+    height: 360px;
+}
+
+.project-card-tall .project-image-wrap {
+    height: 470px;
+}
+
+.project-card-small .project-image-wrap {
+    height: 295px;
+}
+
+.project-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* CONTENT */
+.project-content {
+    padding: 28px 24px 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.project-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    line-height: 1.08;
+    color: #0f172a;
+    margin-bottom: 10px;
+}
+
+.project-card-tall .project-content h3,
+.project-card-small .project-content h3 {
+    font-size: 1.8rem;
+}
+
+.project-content h4 {
+    font-size: 1.02rem;
+    font-weight: 500;
+    color: #111827;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.project-content p {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: #667085;
+    margin-bottom: 20px;
+}
+
+.project-features,
+.project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.project-features {
+    margin-bottom: 18px;
+}
+
+.project-features span {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #d2d6db;
+    background: #f3f4f6;
+    color: #344054;
+    font-size: 0.95rem;
+}
+
+.project-stack span {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #b7e7e2;
+    background: #daf6f2;
+    color: #14b8a6;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* OVERLAY HOVER/CLICK */
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(25, 30, 36, 0.72) 0%,
+        rgba(25, 30, 36, 0.38) 32%,
+        rgba(25, 30, 36, 0.10) 55%,
+        rgba(25, 30, 36, 0) 78%
+    );
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    z-index: 3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 0 22px 18px;
+}
+
+.project-card:hover .project-overlay,
+.project-card.is-active .project-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.project-github-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 22px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: 0.25s ease;
+}
+
+.project-github-btn:hover {
+    background: rgba(255,255,255,0.28);
+    color: #ffffff;
+}
+
+/* FOOTER LINK */
+.projects-footer-link {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+.projects-footer-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #344054;
+    font-size: 1.05rem;
+    border-bottom: 1px solid #c7ccd1;
+    padding-bottom: 6px;
+    transition: 0.25s ease;
+}
+
+.projects-footer-link a:hover {
+    color: #111827;
+    border-bottom-color: #111827;
+}
+
+.projects-footer-link a span {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* RESPONSIVE PROJECTS */
+@media (max-width: 1200px) {
+    .project-card-small {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .projects-top,
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-intro {
+        justify-content: flex-start;
+        padding-bottom: 0;
+    }
+
+    .project-empty-block {
+        display: none;
+    }
+
+    .project-card-large,
+    .project-card-tall,
+    .project-card-small {
+        min-height: auto;
+        max-width: 100%;
+    }
+
+    .project-card-large .project-image-wrap,
+    .project-card-tall .project-image-wrap,
+    .project-card-small .project-image-wrap {
+        height: 340px;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-section {
+        padding: 0 0 80px;
+    }
+
+    .project-content {
+        padding: 22px 18px 20px;
+    }
+
+    .project-content h3 {
+        font-size: 1.7rem;
+    }
+
+    .project-content h4,
+    .project-content p,
+    .project-features span,
+    .project-stack span {
+        font-size: 0.92rem;
+    }
+
+    .project-card-large .project-image-wrap,
+    .project-card-tall .project-image-wrap,
+    .project-card-small .project-image-wrap {
+        height: 260px;
+    }
 }
