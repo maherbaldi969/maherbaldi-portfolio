@@ -428,6 +428,47 @@
 
             <!-- Empty block to keep same composition -->
             <div class="project-empty-block"></div>
+
+            <!-- Dynamic Projects from Database -->
+            {% if projects_db is defined and projects_db|length > 0 %}
+                {% for project in projects_db %}
+                    <article class="project-card project-card-large">
+                        <div class="project-image-wrap">
+                            <img src="{{ asset(project.imagePath) }}" alt="{{ project.title }}">
+                        </div>
+
+                        <div class="project-content">
+                            <h3>{{ project.title }}</h3>
+                            <h4>{{ project.shortDescription }}</h4>
+
+                            <p>
+                                {{ project.fullDescription }}
+                            </p>
+
+                            <div class="project-features">
+                                {% for feature in project.features %}
+                                    <span>✓ {{ feature }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="project-stack">
+                                {% for tech in project.technologies %}
+                                    <span>{{ tech }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="project-overlay">
+                            {% if project.githubUrl %}
+                                <a href="{{ project.githubUrl }}" target="_blank" class="project-github-btn">GitHub</a>
+                            {% endif %}
+                            {% if project.demoUrl %}
+                                <a href="{{ project.demoUrl }}" target="_blank" class="project-github-btn">Live Demo</a>
+                            {% endif %}
+                        </div>
+                    </article>
+                {% endfor %}
+            {% endif %}
         </div>
 
         <div class="projects-footer-link">
