@@ -1917,22 +1917,32 @@ img {
     width: 100%;
     min-height: 54px;
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.10);
-    background: rgba(255,255,255,0.03);
-    color: #f8fafc;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.06);
+    color: #ffffff;
     padding: 0 16px;
     font-size: 1rem;
+    font-weight: 500;
     outline: none;
     transition: 0.25s ease;
 }
 
+/* texte placeholder */
 .form-control::placeholder {
-    color: #7f8ea2;
+    color: #9aa8b8;
 }
 
+/* focus */
 .form-control:focus {
-    border-color: rgba(25, 212, 199, 0.55);
-    box-shadow: 0 0 0 3px rgba(25, 212, 199, 0.10);
+    border-color: rgba(25, 212, 199, 0.65);
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 0 0 3px rgba(25, 212, 199, 0.15);
+}
+
+/* texte tapé visible */
+.form-control,
+.form-control:focus {
+    color: #ffffff;
 }
 
 .login-submit-btn {
