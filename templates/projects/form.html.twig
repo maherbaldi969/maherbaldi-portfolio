@@ -40,59 +40,95 @@
             <a href="{{ path('app_admin_projects') }}" class="admin-link-secondary admin-link-inline">← Back</a>
         </div>
 
+        {% for message in app.flashes('success') %}
+            <div class="admin-flash-success">{{ message }}</div>
+        {% endfor %}
+
         <section class="admin-panel-card">
-            {{ form_start(form, {'attr': {'class': 'admin-form-grid'}}) }}
+            {{ form_start(form, {
+                attr: {
+                    class: 'admin-form-grid',
+                    enctype: 'multipart/form-data'
+                }
+            }) }}
 
                 <div class="admin-form-group">
                     {{ form_label(form.title) }}
                     {{ form_widget(form.title, {'attr': {'class': 'admin-input'}}) }}
+                    {{ form_errors(form.title) }}
                 </div>
 
                 <div class="admin-form-group">
                     {{ form_label(form.slug) }}
                     {{ form_widget(form.slug, {'attr': {'class': 'admin-input'}}) }}
+                    {{ form_errors(form.slug) }}
                 </div>
 
                 <div class="admin-form-group">
                     {{ form_label(form.shortDescription) }}
                     {{ form_widget(form.shortDescription, {'attr': {'class': 'admin-input'}}) }}
+                    {{ form_errors(form.shortDescription) }}
                 </div>
 
                 <div class="admin-form-group">
                     {{ form_label(form.imagePath) }}
-                    {{ form_widget(form.imagePath, {'attr': {'class': 'admin-input', 'placeholder': 'images/project1.png'}}) }}
+                    {{ form_widget(form.imagePath, {'attr': {'class': 'admin-input', 'placeholder': 'uploads/projects/project-image.png'}}) }}
+                    <small class="admin-help-text">Optionnel : chemin manuel ou upload ci-dessous.</small>
+                    {{ form_errors(form.imagePath) }}
                 </div>
+
+                <div class="admin-form-group admin-form-group-full">
+                    {{ form_label(form.imageFile) }}
+                    {{ form_widget(form.imageFile, {'attr': {'class': 'admin-file-input'}}) }}
+                    <small class="admin-help-text">Choisis une image depuis ton PC. JPG, PNG, WEBP ou GIF. Max 5 Mo.</small>
+                    {{ form_errors(form.imageFile) }}
+                </div>
+
+                {% if project is defined and project.imagePath %}
+                    <div class="admin-form-group admin-form-group-full">
+                        <label>Current Image</label>
+                        <div class="admin-image-preview">
+                            <img src="{{ asset(project.imagePath) }}" alt="{{ project.title }}">
+                        </div>
+                    </div>
+                {% endif %}
 
                 <div class="admin-form-group">
                     {{ form_label(form.githubUrl) }}
                     {{ form_widget(form.githubUrl, {'attr': {'class': 'admin-input'}}) }}
+                    {{ form_errors(form.githubUrl) }}
                 </div>
 
                 <div class="admin-form-group">
                     {{ form_label(form.demoUrl) }}
                     {{ form_widget(form.demoUrl, {'attr': {'class': 'admin-input'}}) }}
+                    {{ form_errors(form.demoUrl) }}
                 </div>
 
                 <div class="admin-form-group admin-form-group-full">
                     {{ form_label(form.fullDescription) }}
                     {{ form_widget(form.fullDescription, {'attr': {'class': 'admin-textarea'}}) }}
+                    {{ form_errors(form.fullDescription) }}
                 </div>
 
                 <div class="admin-form-group admin-form-group-full">
                     {{ form_label(form.technologiesText) }}
                     {{ form_widget(form.technologiesText, {'attr': {'class': 'admin-textarea', 'placeholder': 'Symfony\nMySQL\nTwig\nPHP'}}) }}
                     <small class="admin-help-text">Une technologie par ligne</small>
+                    {{ form_errors(form.technologiesText) }}
                 </div>
 
                 <div class="admin-form-group admin-form-group-full">
                     {{ form_label(form.featuresText) }}
                     {{ form_widget(form.featuresText, {'attr': {'class': 'admin-textarea', 'placeholder': 'Admin Dashboard\nOrder Management\nResponsive Design'}}) }}
                     <small class="admin-help-text">Une feature par ligne</small>
+                    {{ form_errors(form.featuresText) }}
                 </div>
 
                 <div class="admin-form-group admin-form-checkbox">
                     {{ form_widget(form.isPublished) }}
                     {{ form_label(form.isPublished) }}
+                    {{ form_errors(form.isPublished) }}
                 </div>
 
                 <div class="admin-form-actions">

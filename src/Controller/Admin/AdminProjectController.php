@@ -7,12 +7,14 @@ use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
-#[Route('/admin/projects')]
+#[Route('/projects')]
 #[IsGranted('ROLE_ADMIN')]
 class AdminProjectController extends AbstractController
 {
@@ -25,13 +27,18 @@ class AdminProjectController extends AbstractController
     }
 
     #[Route('/new', name: 'app_admin_projects_new')]
-    public function new(Request $request, EntityManagerInterface $em): Response
-    {
+    public function new(
+        Request $request,
+        EntityManagerInterface $em,
+        SluggerInterface $slugger
+    ): Response {
         $project = new Project();
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->handleProjectImageUpload($form, $project, $slugger);
+
             $project->setTechnologies($this->explodeLines($form->get('technologiesText')->getData()));
             $project->setFeatures($this->explodeLines($form->get('featuresText')->getData()));
             $project->setUpdatedAt(new \DateTimeImmutable());
@@ -51,8 +58,12 @@ class AdminProjectController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_admin_projects_edit', requirements: ['id' => '\d+'])]
-    public function edit(Project $project, Request $request, EntityManagerInterface $em): Response
-    {
+    public function edit(
+        Project $project,
+        Request $request,
+        EntityManagerInterface $em,
+        SluggerInterface $slugger
+    ): Response {
         $form = $this->createForm(ProjectType::class, $project);
         $form->get('technologiesText')->setData(implode("\n", $project->getTechnologies()));
         $form->get('featuresText')->setData(implode("\n", $project->getFeatures()));
@@ -60,6 +71,8 @@ class AdminProjectController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->handleProjectImageUpload($form, $project, $slugger);
+
             $project->setTechnologies($this->explodeLines($form->get('technologiesText')->getData()));
             $project->setFeatures($this->explodeLines($form->get('featuresText')->getData()));
             $project->setUpdatedAt(new \DateTimeImmutable());
@@ -113,5 +126,30 @@ class AdminProjectController extends AbstractController
         $lines = array_map(fn ($item) => trim((string) $item), $lines);
 
         return array_values(array_filter($lines, fn ($item) => $item !== ''));
+    }
+
+    private function handleProjectImageUpload($form, Project $project, SluggerInterface $slugger): void
+    {
+        $imageFile = $form->get('imageFile')->getData();
+
+        if (!$imageFile) {
+            return;
+        }
+
+        $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+        $safeFilename = $slugger->slug($originalFilename);
+        $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+        try {
+            $imageFile->move(
+                $this->getParameter('kernel.project_dir').'/public/uploads/projects',
+                $newFilename
+            );
+
+            // chemin enregistré en base
+            $project->setImagePath('uploads/projects/'.$newFilename);
+        } catch (FileException $e) {
+            throw new \RuntimeException('Erreur lors de l’upload de l’image.');
+        }
     }
 }

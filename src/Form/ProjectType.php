@@ -5,10 +5,12 @@ namespace App\Form;
 use App\Entity\Project;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class ProjectType extends AbstractType
 {
@@ -19,9 +21,37 @@ class ProjectType extends AbstractType
             ->add('slug', TextType::class)
             ->add('shortDescription', TextType::class)
             ->add('fullDescription', TextareaType::class)
-            ->add('imagePath', TextType::class, ['required' => false])
-            ->add('githubUrl', TextType::class, ['required' => false])
-            ->add('demoUrl', TextType::class, ['required' => false])
+
+            // Champ texte conservé seulement si tu veux garder un chemin manuel en option
+            ->add('imagePath', TextType::class, [
+                'required' => false,
+            ])
+
+            // Nouveau champ upload fichier
+            ->add('imageFile', FileType::class, [
+                'label' => 'Project Image',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '5M',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/webp',
+                            'image/gif',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez uploader une image valide (JPG, PNG, WEBP ou GIF).',
+                    ])
+                ],
+            ])
+
+            ->add('githubUrl', TextType::class, [
+                'required' => false,
+            ])
+            ->add('demoUrl', TextType::class, [
+                'required' => false,
+            ])
             ->add('technologiesText', TextareaType::class, [
                 'mapped' => false,
                 'required' => false,
@@ -33,9 +63,8 @@ class ProjectType extends AbstractType
                 'data' => '',
             ])
             ->add('isPublished', CheckboxType::class, [
-                'required' => false
-            ])
-        ;
+                'required' => false,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
