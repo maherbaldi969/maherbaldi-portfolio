@@ -324,7 +324,7 @@
 
         <div class="projects-grid">
             <!-- Project 1 -->
-            <article class="project-card project-card-large">
+            <article class="project-card">
                 <div class="project-image-wrap">
                     <img src="{{ asset('images/priject1.png') }}" alt="Tunisian Pastry E-commerce">
                 </div>
@@ -360,7 +360,7 @@
             </article>
 
             <!-- Project 2 -->
-            <article class="project-card project-card-tall">
+            <article class="project-card">
                 <div class="project-image-wrap">
                     <img src="{{ asset('images/haijimaproject.png') }}" alt="Hijama Clinic System">
                 </div>
@@ -394,7 +394,7 @@
             </article>
 
             <!-- Project 3 -->
-            <article class="project-card project-card-small">
+            <article class="project-card">
                 <div class="project-image-wrap">
                     <img src="{{ asset('images/portfiloproejct.png') }}" alt="Developer Portfolio">
                 </div>
@@ -426,13 +426,10 @@
                 </div>
             </article>
 
-            <!-- Empty block to keep same composition -->
-            <div class="project-empty-block"></div>
-
             <!-- Dynamic Projects from Database -->
             {% if projects_db is defined and projects_db|length > 0 %}
                 {% for project in projects_db %}
-                    <article class="project-card project-card-large">
+                    <article class="project-card">
                         <div class="project-image-wrap">
                             <img src="{{ asset(project.imagePath) }}" alt="{{ project.title }}">
                         </div>

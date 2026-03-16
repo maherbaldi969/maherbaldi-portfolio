@@ -871,9 +871,9 @@ img {
 /* GRID */
 .projects-grid {
     display: grid;
-    grid-template-columns: 2.05fr 0.95fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
-    align-items: start;
+    align-items: stretch;
 }
 
 .project-card {
@@ -884,6 +884,9 @@ img {
     background: #ffffff;
     box-shadow: 0 8px 24px rgba(15, 23, 42, 0.03);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover {
@@ -891,23 +894,16 @@ img {
     box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
 }
 
-.project-card-large {
-    min-height: 640px;
-}
-
-.project-card-tall {
-    min-height: 860px;
-}
-
+/* Remove the old sizing classes to ensure uniform cards */
+.project-card-large,
+.project-card-tall,
 .project-card-small {
-    min-height: 540px;
-    max-width: 48%;
+    min-height: auto;
+    max-width: none;
 }
 
 .project-empty-block {
-    min-height: 540px;
-    border-radius: 18px;
-    border: 1px solid transparent;
+    display: none;
 }
 
 /* IMAGE */
@@ -916,18 +912,7 @@ img {
     overflow: hidden;
     background: #ddd;
     position: relative;
-}
-
-.project-card-large .project-image-wrap {
-    height: 360px;
-}
-
-.project-card-tall .project-image-wrap {
-    height: 470px;
-}
-
-.project-card-small .project-image-wrap {
-    height: 295px;
+    height: 320px;
 }
 
 .project-image-wrap img {
@@ -1082,12 +1067,6 @@ img {
 }
 
 /* RESPONSIVE PROJECTS */
-@media (max-width: 1200px) {
-    .project-card-small {
-        max-width: 100%;
-    }
-}
-
 @media (max-width: 1100px) {
     .projects-top,
     .projects-grid {
@@ -1110,9 +1089,7 @@ img {
         max-width: 100%;
     }
 
-    .project-card-large .project-image-wrap,
-    .project-card-tall .project-image-wrap,
-    .project-card-small .project-image-wrap {
+    .project-image-wrap {
         height: 340px;
     }
 }
@@ -1137,9 +1114,7 @@ img {
         font-size: 0.92rem;
     }
 
-    .project-card-large .project-image-wrap,
-    .project-card-tall .project-image-wrap,
-    .project-card-small .project-image-wrap {
+    .project-image-wrap {
         height: 260px;
     }
 }
