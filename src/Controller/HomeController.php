@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\ContactMessage;
 use App\Form\ContactMessageType;
 use App\Repository\ProjectRepository;
+use App\Repository\SkillRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,12 +18,18 @@ final class HomeController extends AbstractController
     public function index(
         Request $request,
         EntityManagerInterface $em,
-        ProjectRepository $projectRepository
+        ProjectRepository $projectRepository,
+        SkillRepository $skillRepository
     ): Response {
         $projects = $projectRepository->findBy(
             ['isPublished' => true],
             ['createdAt' => 'DESC']
         );
+
+        $frontendSkills = $skillRepository->findPublishedByCategory('frontend');
+        $backendSkills = $skillRepository->findPublishedByCategory('backend');
+        $databaseToolsSkills = $skillRepository->findPublishedByCategory('database_tools');
+        $allTechnologyTags = $skillRepository->findPublishedTags();
 
         $contactMessage = new ContactMessage();
         $form = $this->createForm(ContactMessageType::class, $contactMessage);
@@ -38,6 +45,10 @@ final class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'projects_db' => $projects,
+            'frontendSkills' => $frontendSkills,
+            'backendSkills' => $backendSkills,
+            'databaseToolsSkills' => $databaseToolsSkills,
+            'allTechnologyTags' => $allTechnologyTags,
             'contactForm' => $form->createView(),
         ]);
     }
