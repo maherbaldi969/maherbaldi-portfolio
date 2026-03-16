@@ -1998,3 +1998,14 @@ img {
         font-size: 1rem;
     }
 }
+.contact-success-message {
+    max-width: 780px;
+    margin: 0 auto 18px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: rgba(34, 197, 94, 0.10);
+    border: 1px solid rgba(34, 197, 94, 0.22);
+    color: #166534;
+    text-align: center;
+    font-weight: 600;
+}

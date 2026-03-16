@@ -491,6 +491,12 @@
 <section id="contact" class="contact-section">
     <div class="container contact-wrapper">
 
+        {% for message in app.flashes('success') %}
+            <div class="contact-success-message">
+                {{ message }}
+            </div>
+        {% endfor %}
+
         <div class="contact-heading">
             <p class="section-label">GET IN TOUCH</p>
             <h2 class="contact-title">
@@ -564,22 +570,49 @@
 
             <!-- RIGHT -->
             <div class="contact-right">
-                <form class="contact-form" action="#" method="post">
+                {{ form_start(contactForm, {'attr': {'class': 'contact-form'}}) }}
+
                     <div class="contact-form-row">
                         <div class="form-group">
-                            <label for="name">NAME</label>
-                            <input id="name" name="name" type="text" placeholder="Your full name">
+                            {{ form_label(contactForm.fullName, 'NAME') }}
+                            {{ form_widget(contactForm.fullName, {
+                                'attr': {
+                                    'placeholder': 'Your full name'
+                                }
+                            }) }}
+                            {{ form_errors(contactForm.fullName) }}
                         </div>
 
                         <div class="form-group">
-                            <label for="email">EMAIL</label>
-                            <input id="email" name="email" type="email" placeholder="your@email.com">
+                            {{ form_label(contactForm.email, 'EMAIL') }}
+                            {{ form_widget(contactForm.email, {
+                                'attr': {
+                                    'placeholder': 'your@email.com'
+                                }
+                            }) }}
+                            {{ form_errors(contactForm.email) }}
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="message">MESSAGE</label>
-                        <textarea id="message" name="message" rows="6" placeholder="Tell me about your project or opportunity..."></textarea>
+                        {{ form_label(contactForm.subject, 'SUBJECT') }}
+                        {{ form_widget(contactForm.subject, {
+                            'attr': {
+                                'placeholder': 'Project, freelance, full-time...'
+                            }
+                        }) }}
+                        {{ form_errors(contactForm.subject) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(contactForm.message, 'MESSAGE') }}
+                        {{ form_widget(contactForm.message, {
+                            'attr': {
+                                'rows': 6,
+                                'placeholder': 'Tell me about your project or opportunity...'
+                            }
+                        }) }}
+                        {{ form_errors(contactForm.message) }}
                     </div>
 
                     <button type="submit" class="contact-submit-btn">
@@ -591,7 +624,8 @@
                         Or email me directly at
                         <a href="mailto:maherbaldi.dev@gmail.com">maherbaldi.dev@gmail.com</a>
                     </p>
-                </form>
+
+                {{ form_end(contactForm) }}
             </div>
 
         </div>

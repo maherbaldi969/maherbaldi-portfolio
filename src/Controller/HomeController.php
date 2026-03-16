@@ -2,23 +2,43 @@
 
 namespace App\Controller;
 
+use App\Entity\ContactMessage;
+use App\Form\ContactMessageType;
 use App\Repository\ProjectRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 final class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(ProjectRepository $projectRepository): Response
-    {
+    public function index(
+        Request $request,
+        EntityManagerInterface $em,
+        ProjectRepository $projectRepository
+    ): Response {
         $projects = $projectRepository->findBy(
             ['isPublished' => true],
             ['createdAt' => 'DESC']
         );
 
+        $contactMessage = new ContactMessage();
+        $form = $this->createForm(ContactMessageType::class, $contactMessage);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($contactMessage);
+            $em->flush();
+
+            $this->addFlash('success', 'Your message has been sent successfully.');
+            return $this->redirectToRoute('app_home', ['_fragment' => 'contact']);
+        }
+
         return $this->render('home/index.html.twig', [
-            'projects_db' => $projects
+            'projects_db' => $projects,
+            'contactForm' => $form->createView(),
         ]);
     }
 }
