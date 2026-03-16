@@ -562,3 +562,9 @@
     color: #e7edf5;
     line-height: 1.8;
 }
+.admin-current-file-box {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}

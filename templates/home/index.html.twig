@@ -62,10 +62,10 @@
                         VIEW PROJECTS
                     </a>
 
-                    <a href="{{ asset('files/maher-baldi-cv.pdf') }}" class="btn btn-outline btn-large" download>
-                        <span class="icon">↓</span>
-                        DOWNLOAD CV
-                    </a>
+                   <a href="{{ siteSettings and siteSettings.cvFilePath ? asset(siteSettings.cvFilePath) : '#' }}" class="btn btn-outline btn-large" {% if siteSettings and siteSettings.cvFilePath %}download{% endif %}>
+    <span class="icon">↓</span>
+    DOWNLOAD CV
+</a>
                 </div>
 
                 <div class="hero-secondary">
@@ -77,9 +77,9 @@
 
                 <div class="social-row">
                     <span class="line"></span>
-                    <a href="https://github.com/" target="_blank">GitHub</a>
-                    <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
-                    <a href="mailto:maher@example.com">Email</a>
+                    <a href="{{ siteSettings and siteSettings.githubUrl ? siteSettings.githubUrl : '#' }}" target="_blank">GitHub</a>
+<a href="{{ siteSettings and siteSettings.linkedinUrl ? siteSettings.linkedinUrl : '#' }}" target="_blank">LinkedIn</a>
+<a href="mailto:{{ siteSettings and siteSettings.contactEmail ? siteSettings.contactEmail : 'maher@example.com' }}">Email</a>
                 </div>
             </div>
 

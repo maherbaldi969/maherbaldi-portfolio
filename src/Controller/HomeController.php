@@ -7,6 +7,7 @@ use App\Form\ContactMessageType;
 use App\Repository\EducationRepository;
 use App\Repository\ExperienceRepository;
 use App\Repository\ProjectRepository;
+use App\Repository\SiteSettingRepository;
 use App\Repository\SkillRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,7 +24,8 @@ final class HomeController extends AbstractController
         ProjectRepository $projectRepository,
         SkillRepository $skillRepository,
         ExperienceRepository $experienceRepository,
-        EducationRepository $educationRepository
+        EducationRepository $educationRepository,
+        SiteSettingRepository $siteSettingRepository
     ): Response {
         $projects = $projectRepository->findBy(
             ['isPublished' => true],
@@ -37,6 +39,8 @@ final class HomeController extends AbstractController
 
         $experiences = $experienceRepository->findPublishedOrdered();
         $educations = $educationRepository->findPublishedOrdered();
+
+        $siteSettings = $siteSettingRepository->getMainSettings();
 
         $contactMessage = new ContactMessage();
         $form = $this->createForm(ContactMessageType::class, $contactMessage);
@@ -58,6 +62,7 @@ final class HomeController extends AbstractController
             'allTechnologyTags' => $allTechnologyTags,
             'experiences' => $experiences,
             'educations' => $educations,
+            'siteSettings' => $siteSettings,
             'contactForm' => $form->createView(),
         ]);
     }
