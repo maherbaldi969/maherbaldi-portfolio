@@ -42,6 +42,10 @@
             <div class="admin-flash-success">{{ message }}</div>
         {% endfor %}
 
+        {% for message in app.flashes('error') %}
+            <div class="admin-flash-error">{{ message }}</div>
+        {% endfor %}
+
         <section class="admin-panel-card">
             {{ form_start(form, {
                 attr: {
@@ -53,22 +57,26 @@
                 <div class="admin-form-group admin-form-group-full">
                     {{ form_label(form.githubUrl) }}
                     {{ form_widget(form.githubUrl, {'attr': {'class': 'admin-input', 'placeholder': 'https://github.com/your-profile'}}) }}
+                    {{ form_errors(form.githubUrl) }}
                 </div>
 
                 <div class="admin-form-group admin-form-group-full">
                     {{ form_label(form.linkedinUrl) }}
                     {{ form_widget(form.linkedinUrl, {'attr': {'class': 'admin-input', 'placeholder': 'https://linkedin.com/in/your-profile'}}) }}
+                    {{ form_errors(form.linkedinUrl) }}
                 </div>
 
                 <div class="admin-form-group admin-form-group-full">
                     {{ form_label(form.contactEmail) }}
                     {{ form_widget(form.contactEmail, {'attr': {'class': 'admin-input', 'placeholder': 'you@example.com'}}) }}
+                    {{ form_errors(form.contactEmail) }}
                 </div>
 
                 <div class="admin-form-group admin-form-group-full">
                     {{ form_label(form.cvFile) }}
                     {{ form_widget(form.cvFile, {'attr': {'class': 'admin-file-input'}}) }}
                     <small class="admin-help-text">Upload un nouveau CV PDF depuis ton PC.</small>
+                    {{ form_errors(form.cvFile) }}
                 </div>
 
                 {% if settings.cvFilePath %}
@@ -78,11 +86,6 @@
                             <a href="{{ asset(settings.cvFilePath) }}" target="_blank" class="admin-primary-btn">
                                 View Current CV
                             </a>
-
-                            <form method="post" action="{{ path('app_admin_settings_delete_cv') }}" onsubmit="return confirm('Supprimer le CV actuel ?');">
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete_cv') }}">
-                                <button type="submit" class="admin-small-btn admin-small-btn-danger">Delete CV</button>
-                            </form>
                         </div>
                     </div>
                 {% endif %}
@@ -92,6 +95,15 @@
                 </div>
 
             {{ form_end(form) }}
+
+            {% if settings.cvFilePath %}
+                <div class="admin-form-group admin-form-group-full" style="margin-top: 18px;">
+                    <form method="post" action="{{ path('app_admin_settings_delete_cv') }}" onsubmit="return confirm('Supprimer le CV actuel ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete_cv') }}">
+                        <button type="submit" class="admin-small-btn admin-small-btn-danger">Delete CV</button>
+                    </form>
+                </div>
+            {% endif %}
         </section>
     </main>
 
