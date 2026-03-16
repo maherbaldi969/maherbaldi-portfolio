@@ -1,0 +1,120 @@
+{# templates/home/projects.html.twig #}
+
+<!-- PROJECTS -->
+<section id="projects" class="projects-section">
+    <div class="container projects-wrapper">
+
+        <div class="projects-top">
+            <div class="projects-heading">
+                <p class="section-label">PROJECTS</p>
+                <h2 class="projects-title">
+                    What I've
+                    <span>built</span>
+                </h2>
+            </div>
+            <div class="projects-intro">
+                <p>
+                    A selection of projects showcasing my full-stack development skills
+                    with Symfony, Angular, and Odoo.
+                </p>
+            </div>
+        </div>
+
+        <div class="projects-grid">
+
+            <!-- Project 1 -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="{{ asset('images/portfiloproejct.png') }}" alt="Tunisian Pastry E-commerce">
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Tunisian Pastry E-commerce</h3>
+                        <div class="project-tech">
+                            <span>Symfony</span>
+                            <span>Angular</span>
+                            <span>MySQL</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Complete e-commerce platform for a Tunisian pastry shop with product catalog,
+                        shopping cart, user accounts, and order management.
+                    </p>
+                    <div class="project-actions">
+                        <a href="#" class="project-github-btn">
+                            <span>⌘</span>
+                            View Code
+                        </a>
+                        <span class="project-status">Live</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="{{ asset('images/priject1.png') }}" alt="Hijama Clinic Booking">
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Hijama Clinic Booking</h3>
+                        <div class="project-tech">
+                            <span>Symfony</span>
+                            <span>Bootstrap</span>
+                            <span>MySQL</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Online appointment booking system for Hijama therapy clinic with
+                        calendar integration, patient management, and SMS notifications.
+                    </p>
+                    <div class="project-actions">
+                        <a href="#" class="project-github-btn">
+                            <span>⌘</span>
+                            View Code
+                        </a>
+                        <span class="project-status">Completed</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="{{ asset('images/haijimaproject.png') }}" alt="Odoo ERP Customization">
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Odoo ERP Customization</h3>
+                        <div class="project-tech">
+                            <span>Odoo</span>
+                            <span>Python</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Custom Odoo modules for inventory management, HR workflows, and
+                        accounting integration tailored for Tunisian business requirements.
+                    </p>
+                    <div class="project-actions">
+                        <a href="#" class="project-github-btn">
+                            <span>⌘</span>
+                            View Code
+                        </a>
+                        <span class="project-status">Enterprise</span>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <div class="projects-cta">
+            <p>Want to see more projects or discuss a collaboration?</p>
+            <a href="#contact" class="btn btn-primary">
+                <span class="icon">✉</span>
+                GET IN TOUCH
+            </a>
+        </div>
+
+    </div>
+</section>
