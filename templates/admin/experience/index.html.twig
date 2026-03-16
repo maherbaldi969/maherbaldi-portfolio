@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Experience{% endblock %}
+
+{% block body %}
+<div class="admin-page">
+
+    <aside class="admin-sidebar">
+        <div class="admin-sidebar-top">
+            <a href="{{ path('app_home') }}" class="brand admin-brand">
+                <span class="brand-logo"><span class="brand-mark"></span></span>
+                <span class="brand-text">MB<span class="dot">.</span></span>
+            </a>
+            <p class="admin-panel-label">Portfolio Admin</p>
+        </div>
+
+        <nav class="admin-menu">
+            <a href="{{ path('app_admin_dashboard') }}">Dashboard</a>
+            <a href="{{ path('app_admin_projects') }}">Projects</a>
+            <a href="{{ path('app_admin_skills') }}">Skills</a>
+            <a href="{{ path('app_admin_experience') }}" class="active">Experience</a>
+            <a href="{{ path('app_admin_messages') }}">Messages</a>
+            <a href="#">Settings</a>
+        </nav>
+
+        <div class="admin-sidebar-bottom">
+            <a href="{{ path('app_home') }}" class="admin-link-secondary">View Website</a>
+            <a href="{{ path('app_logout') }}" class="admin-logout-btn">Logout</a>
+        </div>
+    </aside>
+
+    <main class="admin-main">
+        <div class="admin-page-head">
+            <div>
+                <p class="admin-topbar-label">EXPERIENCE MANAGEMENT</p>
+                <h1 class="admin-page-title">Experience</h1>
+            </div>
+
+            <a href="{{ path('app_admin_experience_new') }}" class="admin-primary-btn">+ Add Experience</a>
+        </div>
+
+        {% for message in app.flashes('success') %}
+            <div class="admin-flash-success">{{ message }}</div>
+        {% endfor %}
+
+        <section class="admin-panel-card">
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Job Title</th>
+                            <th>Company</th>
+                            <th>Type</th>
+                            <th>Order</th>
+                            <th>Featured</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in experiences %}
+                        <tr>
+                            <td>{{ item.jobTitle }}</td>
+                            <td>{{ item.companyName }}</td>
+                            <td>{{ item.employmentType ?: '-' }}</td>
+                            <td>{{ item.displayOrder }}</td>
+                            <td>{{ item.isFeatured ? 'Yes' : 'No' }}</td>
+                            <td>
+                                {% if item.isPublished %}
+                                    <span class="status-pill">Published</span>
+                                {% else %}
+                                    <span class="status-pill status-pill-muted">Draft</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="admin-actions-inline">
+                                    <a href="{{ path('app_admin_experience_edit', {id: item.id}) }}" class="admin-small-btn">Edit</a>
+
+                                    <form method="post" action="{{ path('app_admin_experience_toggle_publish', {id: item.id}) }}">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('toggle_experience_' ~ item.id) }}">
+                                        <button type="submit" class="admin-small-btn admin-small-btn-alt">
+                                            {{ item.isPublished ? 'Unpublish' : 'Publish' }}
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="{{ path('app_admin_experience_delete', {id: item.id}) }}" onsubmit="return confirm('Supprimer cette experience ?');">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete_experience_' ~ item.id) }}">
+                                        <button type="submit" class="admin-small-btn admin-small-btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7">Aucune experience pour le moment.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+</div>
+{% endblock %}

@@ -377,91 +377,56 @@
 
         <div class="experience-list">
 
-            <!-- Experience 1 -->
-            <article class="experience-card experience-card-active">
-                <div class="experience-left">
-                    <h3>Odoo Developer</h3>
-                    <h4>ERP Solutions Studio</h4>
+            {% for item in experiences %}
+                <article class="experience-card {{ item.isFeatured ? 'experience-card-active' : '' }}">
+                    <div class="experience-left">
+                        <h3>{{ item.jobTitle }}</h3>
+                        <h4>{{ item.companyName }}</h4>
 
-                    <span class="experience-badge">Full-time</span>
+                        {% if item.employmentType %}
+                            <span class="experience-badge">{{ item.employmentType }}</span>
+                        {% endif %}
 
-                    <div class="experience-meta">
-                        <p>🗓 2024 — Present</p>
-                        <p>📍 Tunisia (Remote)</p>
+                        <div class="experience-meta">
+                            <p>🗓 {{ item.startLabel }} — {{ item.endLabel }}</p>
+                            {% if item.locationLabel %}
+                                <p>📍 {{ item.locationLabel }}</p>
+                            {% endif %}
+                        </div>
                     </div>
-                </div>
 
-                <div class="experience-right">
-                    <p class="experience-summary">
-                        Custom Odoo module development and ERP system configuration for Tunisian businesses.
-                        Delivered tailored workflows for inventory, HR, and accounting modules.
-                    </p>
+                    <div class="experience-right">
+                        <p class="experience-summary">
+                            {{ item.summary }}
+                        </p>
 
-                    <ul class="experience-points">
-                        <li>Built 5+ custom Odoo modules from scratch</li>
-                        <li>Integrated external REST APIs with Odoo backend</li>
-                        <li>Optimized SQL queries reducing report load time by 40%</li>
-                        <li>Trained client teams on custom ERP workflows</li>
-                    </ul>
+                        <ul class="experience-points">
+                            {% for point in item.achievements %}
+                                <li>{{ point }}</li>
+                            {% endfor %}
+                        </ul>
 
-                    <div class="experience-stack">
-                        <span>Odoo</span>
-                        <span>Python</span>
-                        <span>PostgreSQL</span>
-                        <span>XML</span>
-                        <span>REST API</span>
+                        <div class="experience-stack">
+                            {% for tech in item.technologies %}
+                                <span>{{ tech }}</span>
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
-            </article>
+                </article>
+            {% endfor %}
 
-            <!-- Experience 2 -->
-            <article class="experience-card">
-                <div class="experience-left">
-                    <h3>Full Stack Developer</h3>
-                    <h4>Freelance / Self-employed</h4>
-
-                    <span class="experience-badge">Freelance</span>
-
-                    <div class="experience-meta">
-                        <p>🗓 2022 — 2024</p>
-                        <p>📍 Tunisia</p>
+            {% for education in educations %}
+                <article class="education-card">
+                    <div class="education-icon">
+                        <span>✦</span>
                     </div>
-                </div>
 
-                <div class="experience-right">
-                    <p class="experience-summary">
-                        Designed and built complete web applications for clients across e-commerce,
-                        healthcare, and service industries using Symfony and Angular.
-                    </p>
-
-                    <ul class="experience-points">
-                        <li>Delivered Tunisian Pastry e-commerce platform end-to-end</li>
-                        <li>Built Hijama clinic appointment booking system</li>
-                        <li>Developed REST APIs consumed by Angular frontends</li>
-                        <li>Maintained 100% on-time delivery across all projects</li>
-                    </ul>
-
-                    <div class="experience-stack">
-                        <span>Symfony</span>
-                        <span>Angular</span>
-                        <span>PHP</span>
-                        <span>MySQL</span>
-                        <span>Bootstrap</span>
+                    <div class="education-content">
+                        <h3>{{ education.degreeTitle }}</h3>
+                        <p>{{ education.schoolName }}{% if education.graduationLabel %} · {{ education.graduationLabel }}{% endif %}</p>
                     </div>
-                </div>
-            </article>
-
-            <!-- Education -->
-            <article class="education-card">
-                <div class="education-icon">
-                    <span>✦</span>
-                </div>
-
-                <div class="education-content">
-                    <h3>Bachelor's in Computer Science</h3>
-                    <p>University of Tunisia · Graduated 2022</p>
-                </div>
-            </article>
+                </article>
+            {% endfor %}
 
         </div>
     </div>

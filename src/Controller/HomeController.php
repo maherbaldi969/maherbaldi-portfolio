@@ -4,13 +4,15 @@ namespace App\Controller;
 
 use App\Entity\ContactMessage;
 use App\Form\ContactMessageType;
+use App\Repository\EducationRepository;
+use App\Repository\ExperienceRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\SkillRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 final class HomeController extends AbstractController
 {
@@ -19,7 +21,9 @@ final class HomeController extends AbstractController
         Request $request,
         EntityManagerInterface $em,
         ProjectRepository $projectRepository,
-        SkillRepository $skillRepository
+        SkillRepository $skillRepository,
+        ExperienceRepository $experienceRepository,
+        EducationRepository $educationRepository
     ): Response {
         $projects = $projectRepository->findBy(
             ['isPublished' => true],
@@ -30,6 +34,9 @@ final class HomeController extends AbstractController
         $backendSkills = $skillRepository->findPublishedByCategory('backend');
         $databaseToolsSkills = $skillRepository->findPublishedByCategory('database_tools');
         $allTechnologyTags = $skillRepository->findPublishedTags();
+
+        $experiences = $experienceRepository->findPublishedOrdered();
+        $educations = $educationRepository->findPublishedOrdered();
 
         $contactMessage = new ContactMessage();
         $form = $this->createForm(ContactMessageType::class, $contactMessage);
@@ -49,6 +56,8 @@ final class HomeController extends AbstractController
             'backendSkills' => $backendSkills,
             'databaseToolsSkills' => $databaseToolsSkills,
             'allTechnologyTags' => $allTechnologyTags,
+            'experiences' => $experiences,
+            'educations' => $educations,
             'contactForm' => $form->createView(),
         ]);
     }
