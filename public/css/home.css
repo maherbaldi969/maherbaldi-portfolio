@@ -58,7 +58,7 @@ img {
 .portfolio-page {
     position: relative;
     min-height: 100vh;
-    overflow: hidden;
+    overflow: clip;     /* ← sticky fonctionne, glows restent clippés */
 }
 
 /* HEADER */
@@ -293,10 +293,18 @@ img {
 .social-row a {
     font-size: 0.95rem;
     transition: 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
 }
 
 .social-row a:hover {
     color: var(--accent);
+}
+
+.social-row a svg {
+    display: block;
 }
 
 .hero-right {
