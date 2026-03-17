@@ -220,60 +220,59 @@
                     <h3 class="skills-title">Technical Skills</h3>
 
                     <div class="skills-columns">
-                     <div class="skills-group">
+
+  <div class="skills-group">
     <h4>FRONTEND</h4>
-
     {% for skill in frontendSkills %}
-        {% if skill.level is not null %}
-            <div class="skill-item">
-                <div class="skill-head">
-                    <span>{{ skill.name }}</span>
-                    <span>{{ skill.level }}%</span>
-                </div>
-                <div class="skill-bar">
-                    <span style="width:{{ skill.level }}%"></span>
-                </div>
+      {% if skill.level is not null %}
+        <div class="skill-row">
+          <div class="skill-circle">{{ skill.level }}</div>
+          <div class="skill-info">
+            <span class="skill-name">{{ skill.name }}</span>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width:{{ skill.level }}%"></div>
             </div>
-        {% endif %}
+          </div>
+        </div>
+      {% endif %}
     {% endfor %}
-</div>
+  </div>
 
-                       <div class="skills-group">
+  <div class="skills-group">
     <h4>BACKEND</h4>
-
     {% for skill in backendSkills %}
-        {% if skill.level is not null %}
-            <div class="skill-item">
-                <div class="skill-head">
-                    <span>{{ skill.name }}</span>
-                    <span>{{ skill.level }}%</span>
-                </div>
-                <div class="skill-bar">
-                    <span style="width:{{ skill.level }}%"></span>
-                </div>
+      {% if skill.level is not null %}
+        <div class="skill-row">
+          <div class="skill-circle">{{ skill.level }}</div>
+          <div class="skill-info">
+            <span class="skill-name">{{ skill.name }}</span>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width:{{ skill.level }}%"></div>
             </div>
-        {% endif %}
+          </div>
+        </div>
+      {% endif %}
     {% endfor %}
-</div>
+  </div>
 
-                        <div class="skills-group">
+  <div class="skills-group">
     <h4>DATABASE & TOOLS</h4>
-
     {% for skill in databaseToolsSkills %}
-        {% if skill.level is not null %}
-            <div class="skill-item">
-                <div class="skill-head">
-                    <span>{{ skill.name }}</span>
-                    <span>{{ skill.level }}%</span>
-                </div>
-                <div class="skill-bar">
-                    <span style="width:{{ skill.level }}%"></span>
-                </div>
+      {% if skill.level is not null %}
+        <div class="skill-row">
+          <div class="skill-circle">{{ skill.level }}</div>
+          <div class="skill-info">
+            <span class="skill-name">{{ skill.name }}</span>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width:{{ skill.level }}%"></div>
             </div>
-        {% endif %}
+          </div>
+        </div>
+      {% endif %}
     {% endfor %}
+  </div>
+
 </div>
-                    </div>
 
                     <div class="all-tech-block">
     <h4>ALL TECHNOLOGIES</h4>
