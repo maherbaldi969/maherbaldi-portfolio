@@ -492,7 +492,7 @@ img {
 
 /* ABOUT */
 .about-section {
-    background: var(--light-bg);
+    background: #f1f5f9;
     color: #111827;
     padding: 100px 0 80px;
     position: relative;
@@ -573,31 +573,33 @@ img {
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 12px;
     margin-top: 24px;
 }
 
 .stat-card {
-    min-height: 128px;
-    border: 1px solid #c8e4e1;
-    border-radius: 18px;
-    background: #ffffff;
-    padding: 24px 22px;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.03);
+    border-radius: 16px;
+    padding: 20px 16px;
+    background: #f1f5f9;
+    text-align: center;
+    border: none;
+    box-shadow: none;
 }
 
 .stat-card h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
+    font-size: 2.6rem;
     line-height: 1;
-    color: #0f172a;
-    margin-bottom: 10px;
+    color: #0b8f96;
+    margin-bottom: 8px;
 }
 
 .stat-card p {
-    font-size: 0.95rem;
-    letter-spacing: 0.12em;
-    color: #111827;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: #64748b;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 .skills-title {
@@ -660,7 +662,7 @@ img {
 .skill-bar {
     width: 100%;
     height: 3px;
-    background: #d1d5db;
+    background: #F8F9FA;
     border-radius: 99px;
     overflow: hidden;
 }
@@ -685,7 +687,7 @@ img {
     padding: 10px 14px;
     border-radius: 8px;
     border: 1px solid #cfd4d8;
-    background: #eceeef;
+    background: #F8F9FA;
     color: #1f2937;
     font-size: 0.95rem;
     font-weight: 500;
@@ -699,13 +701,43 @@ img {
     min-height: 56px;
     padding: 0 24px;
     color: #0f172a;
-    border-color: #c7cdd4;
+    border-color: #F8F9FA;
     background: transparent;
 }
 
 .btn-download:hover {
     color: var(--accent-dark);
     border-color: var(--accent-dark);
+}
+
+/* NEW DOWNLOAD BUTTON STYLES - OPTION B */
+.btn-download-b {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 56px;
+    padding: 0 24px;
+    border-radius: 12px;
+    border: 1px solid #0b8f96;
+    background: #f1f5f9;
+    color: #0b8f96;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    transition: 0.25s ease;
+    text-decoration: none;
+}
+
+.btn-download-b:hover {
+    background: #e5eef3;
+    color: #0b8f96;
+    transform: translateY(-1px);
+    border-color: #0b8f96;
+}
+
+.btn-download-b__icon {
+    font-size: 1.1rem;
+    line-height: 1;
 }
 
 /* RESPONSIVE */

@@ -194,26 +194,23 @@
                     </div>
 
                     <div class="stats-grid">
-                        <div class="stat-card">
-                            <h3>3+</h3>
-                            <p>YEARS EXPERIENCE</p>
-                        </div>
-
-                        <div class="stat-card">
-                            <h3>10+</h3>
-                            <p>PROJECTS SHIPPED</p>
-                        </div>
-
-                        <div class="stat-card">
-                            <h3>3</h3>
-                            <p>CORE FRAMEWORKS</p>
-                        </div>
-
-                        <div class="stat-card">
-                            <h3>100%</h3>
-                            <p>REMOTE READY</p>
-                        </div>
-                    </div>
+    <div class="stat-card">
+        <h3>3+</h3>
+        <p>YEARS EXPERIENCE</p>
+    </div>
+    <div class="stat-card">
+        <h3>10+</h3>
+        <p>PROJECTS SHIPPED</p>
+    </div>
+    <div class="stat-card">
+        <h3>3</h3>
+        <p>CORE FRAMEWORKS</p>
+    </div>
+    <div class="stat-card">
+        <h3>100%</h3>
+        <p>REMOTE READY</p>
+    </div>
+</div>
                 </div>
 
                 <div class="about-right-column" id="skills">
@@ -276,7 +273,6 @@
 
                     <div class="all-tech-block">
     <h4>ALL TECHNOLOGIES</h4>
-
     <div class="tech-tags">
         {% for skill in allTechnologyTags %}
             <span>{{ skill.name }}</span>
@@ -285,11 +281,13 @@
 </div>
 
                     <div class="about-download">
-                        <a href="{{ asset('files/maher-baldi-cv.pdf') }}" class="btn btn-outline btn-download" download>
-                            <span class="icon">↓</span>
-                            DOWNLOAD FULL CV
-                        </a>
-                    </div>
+    <a href="{{ asset('files/maher-baldi-cv.pdf') }}"
+       class="btn-download-b"
+       download>
+        <span class="btn-download-b__icon">↓</span>
+        DOWNLOAD FULL CV
+    </a>
+</div>
                 </div>
 
             </div>
