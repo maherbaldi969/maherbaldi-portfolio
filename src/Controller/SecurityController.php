@@ -16,7 +16,7 @@ final class SecurityController extends AbstractController
             return $this->redirectToRoute('app_admin_dashboard');
         }
 
-        return $this->render('security/login.html.twig', [
+        return $this->render('admin/security/login.html.twig', [
             'last_username' => $authenticationUtils->getLastUsername(),
             'error' => $authenticationUtils->getLastAuthenticationError(),
         ]);

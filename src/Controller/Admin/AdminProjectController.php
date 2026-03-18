@@ -21,7 +21,7 @@ class AdminProjectController extends AbstractController
     #[Route('', name: 'app_admin_projects')]
     public function index(ProjectRepository $projectRepository): Response
     {
-        return $this->render('projects/index.html.twig', [
+        return $this->render('admin/projects/index.html.twig', [
             'projects' => $projectRepository->findBy([], ['id' => 'DESC']),
         ]);
     }
@@ -50,7 +50,7 @@ class AdminProjectController extends AbstractController
             return $this->redirectToRoute('app_admin_projects');
         }
 
-        return $this->render('projects/form.html.twig', [
+        return $this->render('admin/projects/form.html.twig', [
             'form' => $form->createView(),
             'pageTitle' => 'Add Project',
             'project' => $project,
@@ -83,7 +83,7 @@ class AdminProjectController extends AbstractController
             return $this->redirectToRoute('app_admin_projects');
         }
 
-        return $this->render('projects/form.html.twig', [
+        return $this->render('admin/projects/form.html.twig', [
             'form' => $form->createView(),
             'pageTitle' => 'Edit Project',
             'project' => $project,
