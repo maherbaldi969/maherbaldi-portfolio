@@ -69,7 +69,8 @@ img {
     background: rgba(7, 18, 28, 0.88);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid rgba(255,255,255,0.04);
-    padding: 14px 0;
+    padding: 0;           /* ← supprime le padding */
+    height: 68px;         /* ← hauteur fixe */
 }
 
 .header-inner {
@@ -77,6 +78,7 @@ img {
     align-items: center;
     justify-content: space-between;
     gap: 24px;
+    height: 100%;         /* ← remplit la hauteur fixe */
 }
 
 .brand {
@@ -87,10 +89,10 @@ img {
 }
 
 .brand-logo-image {
-    width: 42px;
-    height: 42px;
+    height: 36px;
+    width: auto;        /* ← laisse la largeur naturelle */
     object-fit: contain;
-    border-radius: 8px;
+    border-radius: 6px;
     transition: 0.25s ease;
 }
 
