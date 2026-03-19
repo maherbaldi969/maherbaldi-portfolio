@@ -45,6 +45,25 @@
                 });
             }
         });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        if (mobileMenuToggle && mobileMenu) {
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                mobileMenuToggle.classList.toggle('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.mobile-menu-container') && !e.target.closest('.mobile-menu-toggle')) {
+                    mobileMenu.classList.remove('active');
+                    mobileMenuToggle.classList.remove('active');
+                }
+            });
+        }
     });
     </script>
 </body>
