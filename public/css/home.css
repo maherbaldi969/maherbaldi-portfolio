@@ -1520,11 +1520,27 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.15rem;
-    color: #111827;
+    color: #111827;          /* ← couleur du SVG stroke/fill */
     flex-shrink: 0;
-    font-weight: 700;
 }
+
+a.contact-info-item {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+a.contact-info-item:hover .contact-icon-box {
+    border-color: #20c7bb;
+    background: rgba(32, 199, 187, 0.08);
+    color: #0b8f96;
+}
+
+a.contact-info-item:hover h4,
+a.contact-info-item:hover p {
+    color: #0b8f96;
+}
+
 
 .contact-info-item h4 {
     font-size: 0.98rem;
