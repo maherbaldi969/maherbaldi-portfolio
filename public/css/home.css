@@ -2495,3 +2495,395 @@ a.contact-info-item:hover p {
     text-align: center;
     font-weight: 600;
 }
+/* =========================================================
+   HERO IMAGE PORTFOLIO - FINAL VERSION
+   Ajouter à la fin de home.css
+========================================================= */
+
+.hero-grid--cinematic {
+    align-items: center;
+    gap: 56px;
+}
+
+.hero-right--portfolio {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 620px;
+}
+
+.portfolio-visual {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portfolio-visual-bg {
+    position: absolute;
+    inset: 12% 8% 10% 8%;
+    border-radius: 40px;
+    background:
+        radial-gradient(circle at 30% 30%, rgba(20, 184, 166, 0.22), transparent 35%),
+        radial-gradient(circle at 70% 70%, rgba(34, 211, 238, 0.16), transparent 34%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.96));
+    filter: blur(8px);
+    z-index: 1;
+}
+
+.portfolio-visual-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(94, 234, 212, 0.14);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.portfolio-visual-ring.ring-1 {
+    width: 470px;
+    height: 470px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.portfolio-visual-ring.ring-2 {
+    width: 580px;
+    height: 580px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-color: rgba(20, 184, 166, 0.08);
+}
+
+.portfolio-photo-card {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 420px;
+    height: 540px;
+    border-radius: 32px;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.88), rgba(3, 7, 18, 0.98));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(20, 184, 166, 0.08),
+        0 0 40px rgba(20, 184, 166, 0.16);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    isolation: isolate;
+}
+
+.portfolio-photo-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 32px;
+    padding: 1px;
+    background: linear-gradient(
+        135deg,
+        rgba(94, 234, 212, 0.55),
+        rgba(255, 255, 255, 0.08),
+        rgba(20, 184, 166, 0.25)
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.portfolio-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transform: scale(1.02);
+    filter: saturate(1.02) contrast(1.04);
+}
+
+.photo-overlay-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to top, rgba(2, 6, 23, 0.94) 6%, rgba(2, 6, 23, 0.3) 34%, rgba(2, 6, 23, 0.02) 56%),
+        linear-gradient(to right, rgba(20, 184, 166, 0.08), transparent 32%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.photo-badge {
+    position: absolute;
+    z-index: 4;
+    top: 18px;
+    left: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(3, 7, 18, 0.72);
+    border: 1px solid rgba(94, 234, 212, 0.2);
+    color: #ccfbf1;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+}
+
+.photo-meta {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    padding: 24px 24px 26px;
+}
+
+.photo-meta-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(6, 78, 59, 0.25);
+    border: 1px solid rgba(52, 211, 153, 0.25);
+    color: #d1fae5;
+    font-size: 0.82rem;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 0 6px rgba(52, 211, 153, 0.12);
+    flex-shrink: 0;
+}
+
+.photo-meta h3 {
+    margin: 0 0 8px;
+    font-size: clamp(1.4rem, 2vw, 1.9rem);
+    line-height: 1.1;
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.photo-meta p {
+    margin: 0;
+    color: rgba(226, 232, 240, 0.9);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+}
+
+.floating-card {
+    position: absolute;
+    z-index: 4;
+    min-width: 140px;
+    padding: 14px 16px;
+    border-radius: 20px;
+    background: rgba(8, 15, 28, 0.74);
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.floating-card-left {
+    left: -10px;
+    bottom: 120px;
+}
+
+.floating-card-right {
+    right: -12px;
+    top: 92px;
+}
+
+.floating-label {
+    display: block;
+    margin-bottom: 6px;
+    color: rgba(148, 163, 184, 0.9);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.floating-card strong {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+/* petit glow cyan */
+.hero-right--portfolio::after {
+    content: "";
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    right: 10%;
+    bottom: 10%;
+    border-radius: 50%;
+    background: rgba(20, 184, 166, 0.18);
+    filter: blur(70px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 991.98px) {
+    .hero-right--portfolio {
+        min-height: auto;
+    }
+
+    .portfolio-visual {
+        max-width: 460px;
+        min-height: 540px;
+    }
+
+    .portfolio-photo-card {
+        max-width: 360px;
+        height: 470px;
+    }
+
+    .floating-card-left {
+        left: 0;
+        bottom: 80px;
+    }
+
+    .floating-card-right {
+        right: 0;
+        top: 70px;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 767.98px) {
+    .hero-grid--cinematic {
+        gap: 34px;
+    }
+
+    .hero-right--portfolio {
+        order: -1;
+        width: 100%;
+        padding-top: 8px;
+    }
+
+    .portfolio-visual {
+        max-width: 100%;
+        min-height: auto;
+    }
+
+    .portfolio-visual-bg,
+    .portfolio-visual-ring {
+        display: none;
+    }
+
+    .portfolio-photo-card {
+        max-width: 100%;
+        width: 100%;
+        height: 420px;
+        border-radius: 26px;
+    }
+
+    .portfolio-photo-card::before {
+        border-radius: 26px;
+    }
+
+    .photo-badge {
+        top: 14px;
+        left: 14px;
+        font-size: 0.66rem;
+        padding: 8px 12px;
+    }
+
+    .photo-meta {
+        padding: 18px 18px 20px;
+    }
+
+    .photo-meta h3 {
+        font-size: 1.3rem;
+    }
+
+    .photo-meta p {
+        font-size: 0.88rem;
+        line-height: 1.5;
+    }
+
+    .photo-meta-status {
+        font-size: 0.76rem;
+        padding: 7px 12px;
+        margin-bottom: 12px;
+    }
+
+    .floating-card {
+        min-width: 120px;
+        padding: 12px 14px;
+        border-radius: 16px;
+    }
+
+    .floating-card-left {
+        left: 10px;
+        bottom: 14px;
+    }
+
+    .floating-card-right {
+        right: 10px;
+        top: 14px;
+    }
+
+    .floating-label {
+        font-size: 0.68rem;
+    }
+
+    .floating-card strong {
+        font-size: 0.95rem;
+    }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+@media (max-width: 480px) {
+    .portfolio-photo-card {
+        height: 380px;
+    }
+
+    .floating-card {
+        padding: 10px 12px;
+        min-width: 108px;
+    }
+
+    .floating-card strong {
+        font-size: 0.9rem;
+    }
+
+    .photo-meta h3 {
+        font-size: 1.15rem;
+    }
+
+    .photo-meta p {
+        font-size: 0.82rem;
+    }
+}
