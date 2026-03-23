@@ -498,10 +498,12 @@
     </section>
 
     <!-- FOOTER -->
-   <!-- FOOTER -->
+   
+<!-- FOOTER FINAL -->
 <footer class="site-footer">
     <div class="container footer-main">
 
+        <!-- BRAND -->
         <div class="footer-brand">
             <a href="{{ path('app_home') }}" class="brand footer-brand-link">
 
@@ -515,22 +517,37 @@
 
             <p>Building modern and scalable web applications.</p>
 
-            <!-- ICONS RÉELS -->
+            <!-- SOCIAL ICONS -->
             <div class="footer-socials">
-                <a href="https://github.com/maherbaldi969" target="_blank" aria-label="GitHub">
+
+                <!-- GitHub -->
+                <a href="https://github.com/maherbaldi969"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
 
-                <a href="https://linkedin.com/in/maherbaldi" target="_blank" aria-label="LinkedIn">
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com/in/maherbaldi"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
 
-                <a href="mailto:maherbaaldi@gmail.com" aria-label="Email">
+                <!-- EMAIL (ouvre Gmail direct) -->
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=maherbaaldi@gmail.com"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Email">
                     <i class="fas fa-envelope"></i>
                 </a>
+
             </div>
         </div>
 
+        <!-- BOTTOM -->
         <div class="footer-bottom">
             <p>© 2026 Maher Baldi. All rights reserved.</p>
 
@@ -542,6 +559,5 @@
 
     </div>
 </footer>
-
 </div>
 {% endblock %}
