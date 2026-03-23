@@ -2887,3 +2887,98 @@ a.contact-info-item:hover p {
         font-size: 0.82rem;
     }
 }
+/* =========================
+   FOOTER LOGO
+========================= */
+
+.brand-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(20, 184, 166, 0.6));
+    transition: 0.3s ease;
+}
+
+.brand:hover .brand-img {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 16px rgba(20, 184, 166, 0.9));
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* =========================
+   SOCIAL ICONS STYLE PRO
+========================= */
+
+.footer-socials {
+    display: flex;
+    gap: 14px;
+    margin-top: 16px;
+}
+
+.footer-socials a {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    color: #cbd5f5;
+    font-size: 18px;
+
+    transition: all 0.3s ease;
+}
+
+/* HOVER ULTRA PRO */
+.footer-socials a:hover {
+    transform: translateY(-4px) scale(1.05);
+
+    background: rgba(20, 184, 166, 0.12);
+    border-color: rgba(20, 184, 166, 0.4);
+
+    color: #14B8A6;
+
+    box-shadow: 0 10px 25px rgba(20, 184, 166, 0.25);
+}
+
+/* =========================
+   FOOTER STRUCTURE
+========================= */
+
+.footer-brand p {
+    margin-top: 10px;
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    margin-left: 15px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #14B8A6;
+}

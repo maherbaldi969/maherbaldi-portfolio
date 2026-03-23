@@ -498,29 +498,50 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="container footer-main">
-            <div class="footer-brand">
-                <a href="#" class="brand footer-brand-link">
-                    <span class="brand-logo"><span class="brand-mark"></span></span>
-                    <span class="brand-text">MB<span class="dot">.</span></span>
+   <!-- FOOTER -->
+<footer class="site-footer">
+    <div class="container footer-main">
+
+        <div class="footer-brand">
+            <a href="{{ path('app_home') }}" class="brand footer-brand-link">
+
+                <!-- LOGO IMAGE -->
+                <span class="brand-logo">
+                    <img src="{{ asset('images/Background (2).png') }}" alt="MB Logo" class="brand-img">
+                </span>
+
+                <span class="brand-text">MB<span class="dot">.</span></span>
+            </a>
+
+            <p>Building modern and scalable web applications.</p>
+
+            <!-- ICONS RÉELS -->
+            <div class="footer-socials">
+                <a href="https://github.com/" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
                 </a>
-                <p>Building modern and scalable web applications.</p>
-                <div class="footer-socials">
-                    <a href="https://github.com/" target="_blank" aria-label="GitHub">⌘</a>
-                    <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn">in</a>
-                    <a href="mailto:maherbaldi.dev@gmail.com" aria-label="Email">✉</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 Maher Baldi. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="#">Privacy</a>
-                    <a href="#">Terms</a>
-                </div>
+
+                <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <a href="mailto:maherbaldi.dev@gmail.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
             </div>
         </div>
-    </footer>
+
+        <div class="footer-bottom">
+            <p>© 2026 Maher Baldi. All rights reserved.</p>
+
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+
+    </div>
+</footer>
 
 </div>
 {% endblock %}
