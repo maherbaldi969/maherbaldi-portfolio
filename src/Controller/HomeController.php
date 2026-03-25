@@ -27,10 +27,7 @@ final class HomeController extends AbstractController
         EducationRepository $educationRepository,
         SiteSettingRepository $siteSettingRepository
     ): Response {
-        $projects = $projectRepository->findBy(
-            ['isPublished' => true],
-            ['createdAt' => 'DESC']
-        );
+        $projects = $projectRepository->findPublishedProjects();
 
         $frontendSkills = $skillRepository->findPublishedByCategory('frontend');
         $backendSkills = $skillRepository->findPublishedByCategory('backend');

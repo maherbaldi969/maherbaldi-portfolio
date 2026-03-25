@@ -12,4 +12,15 @@ class ProjectRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Project::class);
     }
+
+    public function findPublishedProjects(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.isPublished = :published')
+            ->setParameter('published', true)
+            ->orderBy('p.displayOrder', 'ASC')
+            ->addOrderBy('p.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

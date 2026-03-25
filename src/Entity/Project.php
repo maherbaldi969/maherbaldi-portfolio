@@ -50,6 +50,9 @@ class Project
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\Column(type: 'integer')]
+    private int $displayOrder = 0;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
@@ -93,4 +96,7 @@ class Project
 
     public function getUpdatedAt(): ?\DateTimeImmutable { return $this->updatedAt; }
     public function setUpdatedAt(\DateTimeImmutable $updatedAt): static { $this->updatedAt = $updatedAt; return $this; }
+
+    public function getDisplayOrder(): int { return $this->displayOrder; }
+    public function setDisplayOrder(int $displayOrder): static { $this->displayOrder = $displayOrder; return $this; }
 }

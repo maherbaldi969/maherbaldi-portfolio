@@ -64,6 +64,10 @@ class ProjectType extends AbstractType
             ])
             ->add('isPublished', CheckboxType::class, [
                 'required' => false,
+            ])
+            ->add('displayOrder', TextType::class, [
+                'required' => false,
+                'attr' => ['placeholder' => 'Display order (0 = default)'],
             ]);
     }
 
