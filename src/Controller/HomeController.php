@@ -39,6 +39,11 @@ final class HomeController extends AbstractController
 
         $siteSettings = $siteSettingRepository->getMainSettings();
 
+        // Calcul des statistiques dynamiques pour la section About
+        $yearsExperience = date('Y') - 2022;
+        $projectsCount = $projectRepository->count([]);
+        $coreFrameworksCount = $skillRepository->count(['category' => 'framework']);
+
         $contactMessage = new ContactMessage();
         $form = $this->createForm(ContactMessageType::class, $contactMessage);
         $form->handleRequest($request);
@@ -61,6 +66,9 @@ final class HomeController extends AbstractController
             'educations' => $educations,
             'siteSettings' => $siteSettings,
             'contactForm' => $form->createView(),
+            'yearsExperience' => $yearsExperience,
+            'projectsCount' => $projectsCount,
+            'coreFrameworksCount' => $coreFrameworksCount,
         ]);
     }
 }
