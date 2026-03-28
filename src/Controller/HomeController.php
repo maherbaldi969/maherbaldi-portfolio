@@ -42,7 +42,7 @@ final class HomeController extends AbstractController
         // Calcul des statistiques dynamiques pour la section About
         $yearsExperience = date('Y') - 2022;
         $projectsCount = $projectRepository->count([]);
-        $coreFrameworksCount = $skillRepository->count(['category' => 'framework']);
+        $coreFrameworksCount = $skillRepository->count(['category' => 'backend']);
 
         $contactMessage = new ContactMessage();
         $form = $this->createForm(ContactMessageType::class, $contactMessage);
