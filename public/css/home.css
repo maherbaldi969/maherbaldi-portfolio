@@ -331,23 +331,32 @@ img {
     gap: 0;
 }
 
-/* Hero Left Blocks - 4 distinct sections */
+/* Hero Left Blocks - 4 distinct sections with position control */
 .hero-badge-block {
     /* Bloc 1 : Badge de disponibilité */
+    position: relative;
+    transform: translate(0, 0);
 }
 
 .hero-name-block {
     /* Bloc 2 : Nom */
+    position: relative;
+    transform: translate(0, 0);
 }
 
 .hero-info-block {
     /* Bloc 3 : Rôle + Description */
+    position: relative;
+    transform: translate(0, 0);
 }
 
 .hero-cta-block {
     /* Bloc 4 : CTA + Réseaux sociaux */
+    position: relative;
+    transform: translate(0, 0);
     display: flex;
     align-items: center;
+    margin-top: auto;
 }
 
 /* Spacing between blocks */
