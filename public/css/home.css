@@ -335,7 +335,7 @@ img {
 .hero-badge-block {
     /* Bloc 1 : Badge de disponibilité */
     position: relative;
-    transform: translate(0, 0);
+    transform: translate(0, -30px);  /* ← Adjust Y value: negative = up, positive = down */
 }
 
 .hero-name-block {
@@ -347,13 +347,13 @@ img {
 .hero-info-block {
     /* Bloc 3 : Rôle + Description */
     position: relative;
-    transform: translate(0, 0);
+    transform: translate(0,-40);
 }
 
 .hero-cta-block {
     /* Bloc 4 : CTA + Réseaux sociaux */
     position: relative;
-    transform: translate(0, 0);
+    transform: translate(0, 45px);  /* ← Adjust Y value to move down further */
     display: flex;
     align-items: center;
     margin-top: auto;
