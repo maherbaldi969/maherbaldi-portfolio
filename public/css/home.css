@@ -326,6 +326,45 @@ img {
 
 .hero-left {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Hero Left Blocks - 4 distinct sections */
+.hero-badge-block {
+    /* Bloc 1 : Badge de disponibilité */
+}
+
+.hero-name-block {
+    /* Bloc 2 : Nom */
+}
+
+.hero-info-block {
+    /* Bloc 3 : Rôle + Description */
+}
+
+.hero-cta-block {
+    /* Bloc 4 : CTA + Réseaux sociaux */
+    display: flex;
+    align-items: center;
+}
+
+/* Spacing between blocks */
+.hero-left > div + div {
+    margin-top: 16px;
+}
+
+.hero-name-block {
+    margin-top: 8px;
+}
+
+.hero-info-block {
+    margin-top: 16px;
+}
+
+.hero-cta-block {
+    margin-top: 24px;
 }
 
 .availability {
@@ -333,7 +372,6 @@ img {
     font-size: 0.82rem;
     letter-spacing: 0.26em;
     font-weight: 700;
-    margin-bottom: 12px;
     text-transform: uppercase;
 }
 
@@ -388,21 +426,34 @@ img {
 .hero-cta-group {
     display: flex;
     align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 12px;
+    flex-wrap: nowrap;
+    width: 100%;
 }
 
 .hero-actions {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.hero-actions .btn {
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 /* Hero Social Icons */
 .hero-social-icons {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.hero-social-icon {
+    flex-shrink: 0;
 }
 
 .hero-social-icon {
@@ -1513,6 +1564,12 @@ img {
         font-size: 1rem;
         line-height: 1.75;
         max-width: 100%;
+    }
+
+    /* Allow CTA to wrap on mobile for better layout */
+    .hero-cta-group {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .hero-actions {
