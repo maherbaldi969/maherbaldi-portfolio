@@ -459,6 +459,7 @@ img {
     align-items: center;
     gap: 6px;
     flex-shrink: 0;
+    margin-left: 12px;  /* ← Adds space between DOWNLOAD CV button and GitHub icon */
 }
 
 .hero-social-icon {
