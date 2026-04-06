@@ -347,7 +347,7 @@ img {
 .hero-info-block {
     /* Bloc 3 : Rôle + Description */
     position: relative;
-    transform: translate(0,-40);
+    transform: translate(0, 20px);  /* ← Adjust Y value: negative = up, positive = down (must include px unit) */
 }
 
 .hero-cta-block {
